@@ -78,7 +78,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenEdgeCubeIs2ThenArea24() {
+    void whenEdgeCubeIs2ThenArea24() {
         Box box = new Box(8, 2);
         double result = box.getArea();
         assertThat(result).isNotNull()
