@@ -29,7 +29,7 @@ public class EvenNumbersIterator implements Iterator<Integer> {
     }
 
     @Override
-    public void remove() throws UnsupportedOperationException {
+    public void remove() {
         throw new UnsupportedOperationException("remove is not supported");
     }
 
