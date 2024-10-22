@@ -23,13 +23,10 @@ public class CyclicIterator<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        resetCursor();
-        return data.get(cursor++);
-    }
-
-    private void resetCursor() {
         if (cursor == data.size()) {
             cursor = 0;
         }
+        return data.get(cursor++);
     }
+
 }
