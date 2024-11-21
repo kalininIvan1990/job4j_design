@@ -16,7 +16,7 @@ public class LogFilter {
             return bufferedReader.lines()
                     .filter(line -> {
                         String[] substring = line.split(" ");
-                        return substring[substring.length - 2].equals("404");
+                        return "404".equals(substring[substring.length - 2]);
                     })
                     .toList();
         } catch (IOException exception) {
