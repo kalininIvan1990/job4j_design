@@ -21,7 +21,7 @@ public class Config {
                     .filter(line -> !line.isEmpty() && !line.startsWith("#"))
                     .forEach(line -> {
                         String[] parts = line.split("=", 2);
-                        if (parts[0].isBlank() || parts[1].isBlank()) {
+                        if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
                             throw new IllegalArgumentException("invalid format");
                         }
                         values.put(parts[0].trim(), parts[1].trim());

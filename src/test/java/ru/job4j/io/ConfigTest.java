@@ -16,13 +16,29 @@ class ConfigTest {
     }
 
     @Test
-    void whenPairInvalidThenIllegalArgumentException() {
-        String path = "./data/invalid.properties";
+    void whenValueWithoutKeyThenIllegalArgumentException() {
+        String path = "./data/invalid_without_key.properties";
         Config config = new Config(path);
         assertThatThrownBy(config::load)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("invalid format");
 
+    }
+
+    @Test
+    void whenKeyWithoutValueThenIllegalArgumentException() {
+        Config config = new Config("./data/invalid_without_value.properties");
+        assertThatThrownBy(config::load)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("invalid");
+    }
+
+    @Test
+    void whenKeyAndValueWithoutSymbol() {
+        Config config = new Config("./data/invalid_without_symbol.properties");
+        assertThatThrownBy(config::load)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("format");
     }
 
     @Test
