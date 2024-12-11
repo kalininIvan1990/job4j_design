@@ -5,8 +5,9 @@ import java.util.StringJoiner;
 
 public class Analysis {
     public void unavailable(String source, String target) {
+        StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(source));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
+             BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line = "";
             String start = null;
 
@@ -17,7 +18,9 @@ public class Analysis {
                 if (start == null && (status == 400 || status == 500)) {
                     start = time;
                 } else if (start != null && (status == 200 || status == 300)) {
-                    writer.write(start + ";" + time + ";" + System.lineSeparator());
+                    writer.write(stringBuilder.append(start).append(";").append(time).append(";")
+                            .append(System.lineSeparator()).toString());
+                    stringBuilder.setLength(0);
                     start = null;
                 }
             }
