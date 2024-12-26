@@ -31,17 +31,17 @@ public class ConsoleChat {
             String userInput = scanner.nextLine();
             log.add("Пользователь: " + userInput);
 
-            if (userInput.equalsIgnoreCase(OUT)) {
+            if (OUT.equalsIgnoreCase(userInput)) {
                 saveLog(log);
                 System.out.println("Чат завершен");
                 isRunning = false;
 
-            } else if (userInput.equalsIgnoreCase(STOP)) {
+            } else if (STOP.equalsIgnoreCase(userInput)) {
                 System.out.println("стоп");
                 log.add("Бот остановлен");
                 isPaused = true;
 
-            } else if (userInput.equalsIgnoreCase(CONTINUE)) {
+            } else if (CONTINUE.equalsIgnoreCase(userInput)) {
                 isPaused = false;
                 log.add("Бот: Продолжаю");
 
