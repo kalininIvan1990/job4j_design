@@ -20,12 +20,19 @@ public class EchoServer {
                     String requestLine = in.readLine();
                     String[] parts = requestLine.split("[?= ]");
                     if (parts.length > 3 && "msg".equals(parts[2])) {
-                        out.write(parts[3].getBytes());
-                        if ("bye".equalsIgnoreCase(parts[3])) {
-                            out.write("\nthe server has stopped".getBytes());
-                            server.close();
-                            System.out.println("сервер прекращает работу");
+                        String message = parts[3];
+                        switch (message) {
+                            case "Hello":
+                                out.write("Hello".getBytes());
+                                break;
+                            case "Exit":
+                                out.write("Server has stopped".getBytes());
+                                server.close();
+                                break;
+                            default:
+                                out.write(message.getBytes());
                         }
+
                     } else {
                         out.write("Invalid key".getBytes());
                     }
